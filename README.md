@@ -13,6 +13,29 @@ cd redis-insight-helm-template
 helm install redisinsight .
 ```
 
+## Recommended Configuration Changes
+
+It is recommended to change the following values in `values.yaml` before deploying:
+
+```yaml
+namespace: monitor
+
+image:
+  tag: 3.0
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "1Gi"
+    cpu: "500m"
+```
+
+* `namespace`: Change to your desired Kubernetes namespace.
+* `image.tag`: Update to a locked version of Redis Insight for stability.
+* `resources`: Adjust resource requests and limits based on your cluster capacity and expected load. Not on official recommendations, but useful for production environments.
+
 ## Changes from Official Documentation
 
 The only change from the official Redis documentation is the **Service type**:
