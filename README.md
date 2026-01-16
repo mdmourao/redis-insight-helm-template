@@ -1,6 +1,6 @@
 # Redis Insight Helm Chart
 
-This Helm chart is an adaptation of the official [Redis Insight deployment instructions](https://docs.redis.com/latest/ri/installing/install-k8s/) converted to a Helm template format.
+This Helm chart is an adaptation of the official [Redis Insight deployment instructions](https://redis.io/docs/latest/operate/redisinsight/install/install-on-k8s/) converted to a Helm template format.
 
 ## Usage
 
