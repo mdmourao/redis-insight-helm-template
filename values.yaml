@@ -1,0 +1,18 @@
+namespace: default
+
+replicaCount: 1
+
+image:
+  repository: redis/redisinsight
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5540
+
+persistence:
+  storageClassName: default
+  accessMode: ReadWriteOnce
+  size: 2Gi
