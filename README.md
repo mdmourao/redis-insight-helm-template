@@ -13,6 +13,22 @@ cd redis-insight-helm-template
 helm install redisinsight .
 ```
 
+Start porting forwarding to access Redis Insight:
+
+```bash
+kubectl port-forward svc/redisinsight-service 5540:80 -n default
+```
+
+And then open your browser and navigate to `http://localhost:5540`.
+
+### Uninstalling
+
+To uninstall the Redis Insight deployment, run:
+
+```bash
+helm uninstall redisinsight
+```
+
 ## Recommended Configuration Changes
 
 It is recommended to change the following values in `values.yaml` before deploying:
@@ -21,7 +37,10 @@ It is recommended to change the following values in `values.yaml` before deployi
 namespace: monitor
 
 image:
-  tag: 3.0
+  tag: 3.0.2
+
+persistence:
+  storageClassName: standard # eg: for GKE
 
 resources:
   requests:
@@ -35,6 +54,7 @@ resources:
 * `namespace`: Change to your desired Kubernetes namespace.
 * `image.tag`: Update to a locked version of Redis Insight for stability.
 * `resources`: Adjust resource requests and limits based on your cluster capacity and expected load. Not on official recommendations, but useful for production environments.
+* `persistence.storageClassName`: Set to your cluster's storage class for persistent volume claims.
 
 ## Changes from Official Documentation
 
